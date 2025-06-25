@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Alkimiya's Blockspace Markets</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a; /* Dark background, similar to logo */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .infographic-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #0f0f0f; /* Darker background for the main block */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+            padding: 30px;
+            text-align: center;
+            overflow: hidden; /* For shadow and rounded corners */
+            position: relative;
+        }
+
+        /* Background Animations */
+        .infographic-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: gradient-anim 15s infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes gradient-anim {
+            0% { transform: translate(0, 0); opacity: 0.8; }
+            50% { transform: translate(-10%, -10%); opacity: 1; }
+            100% { transform: translate(0, 0); opacity: 0.8; }
+        }
+
+        .infographic-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #00ffff; /* Cyan accent */
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .logo-placeholder {
+            margin: 20px auto;
+            width: 120px;
+            height: 120px;
+            background-color: #333; /* Placeholder background */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8em;
+            color: #aaa;
+            border: 2px solid #00ffff;
+            overflow: hidden; /* For the image, if it's there */
+        }
+
+        .logo-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain; /* To fit the logo */
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            color: #00ffff;
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-item {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            background-color: #333;
+            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .feature-item h3 {
+            color: #00ffff;
+            margin-top: 0;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+
+        .task-info {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-size: 1em;
+            color: #eee;
+            box-shadow: 0 4px 10px rgba(0, 255, 255, 0.05);
+        }
+
+        .social-links {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .social-links a {
+            color: #00ffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        /* Icons for social media (can add SVG or Font Awesome) */
+        .social-links a::before {
+            content: '';
+            display: block;
+            font-size: 1.5em; /* Approximate size for icons */
+            margin-bottom: 5px;
+        }
+        .social-links a[href*="alkimiya.io/"]::before { content: '🌐'; } /* Website */
+        .social-links a[href*="app.alkimiya.io"]::before { content: '⚙️'; } /* App */
+        .social-links a[href*="docs.alkimiya.io"]::before { content: '📚'; } /* Documentation */
+        .social-links a[href*="handbook.alkimiya.io"]::before { content: '📖'; } /* Handbook */
+        .social-links a[href*="blog"]::before { content: '✍️'; } /* Blog */
+        .social-links a[href*="x.com"]::before { content: '✖️'; } /* X (Twitter) */
+
+
+        @media (max-width: 600px) {
+            .infographic-container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .section-title {
+                font-size: 1.5em;
+            }
+            .social-links a {
+                margin: 0 10px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="infographic-container">
+        <h1>Alkimiya's Blockspace Markets</h1>
+
+        <div class="logo-placeholder">
+            <p style="font-size: 1.5em; color: #00ffff; text-shadow: 0 0 5px #00ffff;">Alkimiya</p>
+        </div>
+
+        <p>
+            **Alkimiya's Blockspace Markets** is an innovative protocol that opens new horizons in managing and trading essential on-chain resources. Discover transparent and efficient ways to hedge risks and optimize gas and blockspace costs.
+        </p>
+
+        <h2 class="section-title">Key Advantages</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Volatility Hedging</h3>
+                <p>Protect yourself from unpredictable changes in gas fees and blockspace prices.</p>
+            </div>
+            <div class="feature-item">
+                <h3>New Financial Instruments</h3>
+                <p>Trade on-chain revenues and create derivatives based on blockchain metrics.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Transparency & Accessibility</h3>
+                <p>Gain 24/7 access to real-time blockchain revenue data.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Cost Optimization</h3>
+                <p>Effectively manage your budget by planning for network operation expenses.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Fourier Program Task</h2>
+        <div class="task-info">
+            <p><strong>Current Task:</strong> Alkimiya's Blockspace Markets</p>
+            <p><strong>Period:</strong> June 23 - 27</p>
+            <p><strong>Frequency:</strong> Once per week</p>
+            <p><strong>Points:</strong> 15 (upon approval)</p>
+        </div>
+
+        <h2 class="section-title">Alkimiya Resources</h2>
+        <div class="social-links">
+            <a href="https://alkimiya.io/" target="_blank" rel="noopener noreferrer">Website</a>
+            <a href="http://app.alkimiya.io/" target="_blank" rel="noopener noreferrer">App</a>
+            <a href="https://docs.alkimiya.io/" target="_blank" rel="noopener noreferrer">Docs</a>
+            <a href="https://handbook.alkimiya.io/" target="_blank" rel="noopener noreferrer">Handbook</a>
+            <a href="https://alkimiya.io/blog" target="_blank" rel="noopener noreferrer">Blog</a>
+            <a href="https://x.com/alkimiya_io" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+        </div>
+    </div>
+
+</body>
+</html>
